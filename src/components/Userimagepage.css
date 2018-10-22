@@ -1,0 +1,42 @@
+.userimage-list {
+  display: flex;
+  width: 98vw;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.image {
+   padding: 0;
+   margin-bottom: 10px;
+   cursor: pointer;
+}
+
+.image {
+    vertical-align: bottom;
+    height: 30vh;
+}
+
+@media only screen and (min-width : 801px) {
+  .image {
+      width: 22vw;
+      margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .image {
+      width: 45vw;
+      margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .image {
+      width: 90vw;
+  }
+
+  .image:nth-of-type(2n) {
+    margin-left: 0px;
+  }
+}

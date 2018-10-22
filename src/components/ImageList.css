@@ -1,0 +1,49 @@
+.imagelist-wrapper {
+  display: flex;
+  width: 98vw;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.img {
+   padding: 0;
+   margin-bottom: 10px;
+   cursor: pointer;
+}
+
+img {
+    vertical-align: bottom;
+    height: 40vh;
+}
+
+@media only screen and (min-width : 801px) {
+  img {
+      width: 30vw;
+  }
+
+  .img:not(:nth-of-type(3n+1)) {
+      margin-left: 10px;
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  img {
+      width: 45vw;
+  }
+
+  .img:nth-of-type(2n) {
+    margin-left: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  img {
+      width: 90vw;
+  }
+
+  .img:nth-of-type(2n) {
+    margin-left: 0px;
+  }
+
+}

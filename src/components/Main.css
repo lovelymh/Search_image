@@ -1,0 +1,14 @@
+.main-wrapper {
+  display: flex;
+  min-height: 99vh;
+  flex-direction: column;
+}
+
+footer {
+  text-align: center;
+
+}
+main {
+  flex: 1;
+  color: #495057;
+}
