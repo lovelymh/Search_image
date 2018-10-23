@@ -106,10 +106,10 @@ class Header extends Component {
 
     return (
       <div className="Header-wrapper">
-        <li className="mainlink"><Link to={{pathname: '/'}}>Search Image</Link></li>
+        <li className="mainlink"><Link to={{pathname: '/'}}>Search Free Image</Link></li>
         <div className="searchimg-form">
           <input type="text" onChange={this.handleChangeinput} onKeyPress={this.handleKeyPress}
-                className="search-input" placeholder="이미지를 검색해보세요!"/>
+                className="search-input" placeholder="저작권없는 이미지를 검색하고 사용하세요!"/>
           <img src="/image/magnifying-glass-1083373_640.png" className="search-img" onClick={this.handleSearch}/>
         </div>
         {common}

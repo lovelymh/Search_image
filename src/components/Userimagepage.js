@@ -33,6 +33,7 @@ class Userimagepage extends Component{
         )
     return(
       <div className="userimage-page-wrapper">
+        <div className="userimage-user">{this.props.status.currentUser}님의 좋아요 리스트</div>
         <div className="userimage-list">
           {this.props.all_userimage.userimageinfo.length > 0 ? userimage_list : nothing }
         </div>
