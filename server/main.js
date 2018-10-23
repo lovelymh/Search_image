@@ -1,40 +1,31 @@
 import express from 'express';
 import WebpackDevServer from 'webpack-dev-server';
 import webpack from 'webpack';
-// import morgan from 'morgan'; //http 요청을 로그하는 미들웨어
 import bodyParser from 'body-parser'; //JSON을 파싱할때 사용하는 미들웨어
 import mongoose from 'mongoose'; //mongodb 데이터 모델링 툴. javascript 객체로 사용할 수 있게 해줌
 import session from 'express-session'; //express에서 세션을 다룰때 사용되는 미들웨어
 import api from './routes';
 import path from 'path';
-//const RedisStore = require('connect-redis')(session);
 
 const app = express();
 const port = 3000;
 const devPort = 3001;
 
-// app.use(morgan('dev'));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json;
 app.use(bodyParser.json());
 
-//mongodb connection
-// const db = mongoose.connection;
-// db.on('error', console.error);
-//db.once('open', ()=>{
-  //console.log('Connected to mongodb server');
-  mongoose.Promise = global.Promise;
-  mongoose.connect('mongodb://localhost/codelab', { useNewUrlParser: true })
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/codelab', { useNewUrlParser: true })
   .then(() => console.log('Successfully connected to mongodb'))
   .catch(e => console.error(e));
-//})
+
 //use session
 app.use(session({
   secret: 'codelab$112$34', //이 값을 이용하여 세션을 암호화하여 저장
   resave: false, //세션이 변경되지 않어도 언제나 저장할지?
   saveUninitialized: true, //세션이 저장되기전에  uninitialized 상태로 미리 만들어서 저장할지?
-  //store: new RedisStore(),
 }));
 
 app.use('/', express.static(__dirname + './../public'));
@@ -62,9 +53,6 @@ if(process.env.NODE_ENV == 'development') {
         console.log('webpack-dev-server is listening on port', devPort);
     });
 }
-
-
-
 
 app.listen(port, () => {
     console.log('Express is listening on port', port);

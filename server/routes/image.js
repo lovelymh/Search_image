@@ -1,20 +1,17 @@
-import express from 'express';
+const express = require('express');
 const request = require('request');
 const rq = require('request-promise');
 const download = require('image-downloader');
 const fs = require('fs');
-
 const router = express.Router();
+const apikey = require('../apikey');
 
-var API_KEY = '9960643-b2bbe7a27c043f80d03c74c3d';
-var URL = "https://pixabay.com/api/?key="+API_KEY+"&lang=ko";
-var keyword;
-var page;
-var data;
+const URL = `https://pixabay.com/api/?key=${apikey.pixabay}&lang=ko`;
+let data;
 
 function getData(searchname, pagenum){
-  keyword = "&q="+ encodeURIComponent(searchname);
-  page = "&page="+pagenum;
+  let keyword = `&q=${encodeURIComponent(searchname)}`;
+  let page = `&page=${pagenum}`;
   console.log(searchname ? URL+keyword+page : URL+page)
   return rq({
        url: (searchname ? URL+keyword+page : URL+page),

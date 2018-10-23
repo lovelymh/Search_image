@@ -70,7 +70,7 @@ export function userImageallgetFailure(){
 export function userImagesaveRequest(userid, img_id) {
   return (dispatch) => {
     dispatch(userImagesave());
-    return axios.post('/api/userimage/'+userid, ({userid, img_id}))
+    return axios.post(`/api/userimage/${userid}`, ({userid, img_id}))
       .then(res => {
         dispatch(userImagesaveSuccess());
       }).catch(err => {
@@ -128,7 +128,7 @@ export function userImagedelFailure(){
 }
 
 export function getuserimageSuccess(data) {
-    return {
-        type: IMAGE_GET_USER_SUCCESS
-    };
+  return {
+    type: IMAGE_GET_USER_SUCCESS
+  };
 }
