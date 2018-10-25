@@ -6,12 +6,12 @@ import { AUTH_LOGIN, AUTH_LOGIN_SUCCESS, AUTH_LOGIN_FAILURE,
 import axios from 'axios';
 
 /* LOGIN */
-export function loginRequest(username, password) {
+export function loginRequest(userid, password) {
   return (dispatch) => {
     dispatch(login());
-    return axios.post('/api/account/signin', { username, password })
+    return axios.post('/api/account/signin', { userid, password })
       .then(res => {
-        dispatch(loginSuccess(username));
+        dispatch(loginSuccess(res.data.username));
       }).catch(err => {
         dispatch(loginFailure());
       });
@@ -72,7 +72,6 @@ export function registerFailure(error) {
 /*GET STATUS*/
 export function getStatusRequest() {
   return (dispatch) => {
-    //API STATRING을 알림
     dispatch(getStatus());
     return axios.get('/api/account/getInfo')
       .then((res)=> {

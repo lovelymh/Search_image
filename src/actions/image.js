@@ -93,7 +93,6 @@ export function imagesaveRequest(url, id, type) {
       dispatch(saveimage());
       return axios.post('/api/image/server', {url, id, type})
         .then(res => {
-          console.log(res);
           dispatch(saveimageSuccess());
         }).catch(err => {
           dispatch(saveimageFailure());

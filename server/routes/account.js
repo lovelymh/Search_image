@@ -14,7 +14,6 @@ router.post('/signup', (req, res) => {
       code: 1
     });
   }
-
   //패스워드 길이 체크
   if(req.body.password.length < 6 || typeof req.body.password !== "string") {
     return res.status(400).json({
@@ -51,6 +50,7 @@ router.post('/signup', (req, res) => {
 
 //로그인
 router.post('/signin', (req, res) => {
+//  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
   if(typeof req.body.password !== "string"){
     return res.status(401).json({
       error: "LOGIN FAILED",
@@ -58,7 +58,7 @@ router.post('/signin', (req, res) => {
     });
   }
   //userid로 찾기
-  Account.findOne({ username: req.body.userid}, (err, account)=>{
+  Account.findOne({ userid: req.body.userid}, (err, account)=>{
       if(err) throw err;
 
       //check account 존재여부
@@ -68,7 +68,6 @@ router.post('/signin', (req, res) => {
           code: 1
         })
       }
-
        //password가 유효한지 체크
       if(!account.validateHash(req.body.password)) {
         return res.status(401).json({
@@ -86,7 +85,8 @@ router.post('/signin', (req, res) => {
       }
 
       session.save();
-      res.send(true);
+
+      res.json({ username: account.name });
     });
 });
 
@@ -121,12 +121,12 @@ router.put('/user/:userid', (req, res) => {
 //새로고침을 해서 어플리케이션이 처음부터 다시 렌더링하게 될때,
 //현재 갖고있는 쿠키가 유효한건지 체크하기 위해서 필요하다
 router.get('/getinfo', (req, res) => {
+  res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
   if(typeof req.session.loginInfo === "undefined") {
     return res.status(401).json({
       error: 1
     });
   }
-
   res.json({ info: req.session.loginInfo });
 });
 

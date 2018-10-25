@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Authentication from './Authentication';
-import './EditUserinfo.css';
 
 class EditUserinfo extends Component {
 

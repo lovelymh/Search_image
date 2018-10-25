@@ -1,8 +1,10 @@
 var webpack = require('webpack');
 
 module.exports = {
+    devtool: 'source-map',
 
     entry: [
+        'babel-polyfill',
         './src/index.js',
         'react-hot-loader/patch',
         'webpack-dev-server/client?http://0.0.0.0:3001',
@@ -26,9 +28,9 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoEmitOnErrorsPlugin()
     ],
 
     module: {

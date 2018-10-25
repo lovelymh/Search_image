@@ -1,7 +1,13 @@
 .userimage-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 98vw;
+  -webkit-box-lines: multiple;
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
   margin-top: 20px;
 }

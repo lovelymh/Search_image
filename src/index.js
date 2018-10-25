@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Switch, Route, BrowserRouter, browserHistory } from 'react-router-dom';
@@ -17,6 +18,12 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
+
+//internet explorer 호환성을 위해 추가
+import 'core-js/fn/object/assign';
+import 'core-js/fn/promise';
+import 'core-js/es6/array';
+import 'core-js/es6/function';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
