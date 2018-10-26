@@ -20,8 +20,9 @@ class Userimagepage extends Component{
 
   render(){
        let userimagelist = this.props.all_userimage.userimageinfo;
+       let userimage_list;
        if(userimagelist){
-         const userimage_list = userimagelist.map((userimage, idx) => (
+          userimage_list = userimagelist.map((userimage, idx) => (
           <Userimage
              imgid={userimage.imageid}
              src={`./images/${userimage.imageid}_S.jpg`}
