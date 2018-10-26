@@ -17,6 +17,9 @@ class Header extends Component {
     this.props.logoutRequest()
       .then(() => {
         alert(`good-bye, ${currentUser}`);
+        this.setState({
+          searchname: ''
+        });
         this.props.history.push({
           pathname: '/',
           state: { from: this.props.location.pathname }
@@ -60,6 +63,7 @@ class Header extends Component {
          pathname: `/user/${this.props.status.userID}/collection`
        })
        this.setState({
+         searchname: '',
          usernameClicked: false
        });
      })
@@ -70,7 +74,31 @@ class Header extends Component {
       pathname: `/user/${this.props.status.userID}/edit`
     })
     this.setState({
+      searchname: '',
       usernameClicked: false
+    });
+  }
+
+  handleClickmain = () => {
+    this.setState({
+      searchname: ''
+    }, () => {
+      this.props.history.push({
+        pathname: '/',
+        state: { from: this.props.location.pathname }
+      })
+    });
+  }
+
+  handleClicklogin = () => {
+    this.setState({
+      searchname: ''
+    });
+  }
+
+  handleClickregister = () => {
+    this.setState({
+      searchname: ''
     });
   }
 
@@ -83,8 +111,8 @@ class Header extends Component {
     );
     const notloggedin = (
       <ul>
-        <li><Link to="/login">Login</Link></li>
-        <li><Link to="/register">Sign up</Link></li>
+        <li onClick={this.handleClicklogin}><Link to="/login">Login</Link></li>
+        <li onClick={this.handleClickregister}><Link to="/register">Sign up</Link></li>
       </ul>
     );
 
@@ -106,9 +134,9 @@ class Header extends Component {
 
     return (
       <div className="Header-wrapper">
-        <li className="mainlink"><Link to={{pathname: '/'}}>Search Free Image</Link></li>
+        <li className="mainlink" onClick={this.handleClickmain}>Search Free Image</li>
         <div className="searchimg-form">
-          <input type="text" onChange={this.handleChangeinput} onKeyPress={this.handleKeyPress}
+          <input type="text" onChange={this.handleChangeinput} onKeyPress={this.handleKeyPress} value={this.state.searchname}
                 className="search-input" placeholder="저작권없는 이미지를 검색하고 사용하세요!"/>
           <img src="/image/magnifying-glass-1083373_640.png" className="search-img" onClick={this.handleSearch}/>
         </div>

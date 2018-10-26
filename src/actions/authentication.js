@@ -123,7 +123,7 @@ export function userinfo_EditRequest(userid, username, password) {
   return (dispatch) => {
     dispatch(userinfo_Edit());
 
-    return axios.put('/api/account/user/'+userid, { userid, username, password })
+    return axios.put(`/api/account/user/${userid}`, { userid, username, password })
       .then(res => {
         dispatch(userinfo_EditSuccess(username));
       }).catch(err => {

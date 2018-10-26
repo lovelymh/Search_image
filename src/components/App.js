@@ -19,12 +19,13 @@ class App extends Component {
     }
 
     componentDidMount() {
-        const { getStatusRequest, set_searchname, imageRequest, searchname } = this.props;
+        const { getStatusRequest, set_searchname, imageRequest } = this.props;
         getStatusRequest();
-         //이전경로가 /image로 시작하는 경우는 새로 세팅하지 않는다
-        if(!this.props.location.state||!String(this.props.location.state.from).includes("/image")){
+
+        //초기로드 or main 이동시 세팅
+        if(!this.props.location.state||this.props.location.state.from=='/'){
             set_searchname('');
-            imageRequest(searchname, 1, 1);
+            imageRequest('', 1, 1);
         }
 
         $(window).scroll(() => {
@@ -36,15 +37,15 @@ class App extends Component {
                        loadingState: true,
                        page_num: next_page_num
                     }, () => {
-                       imageRequest(searchname, this.state.page_num, 2)
+                       imageRequest(this.props.searchname, this.state.page_num, 2)
                         .then(() => {
                         //  console.log("요청",this.props.searchname, this.state.page_num)
                         })
                     });
                   }
-                }
+               }
             } else {
-              if(this.props.history.location.pathname=='/'){
+               if(this.props.history.location.pathname=='/'){
                 if(this.state.loadingState){
                     this.setState({
                         loadingState: false

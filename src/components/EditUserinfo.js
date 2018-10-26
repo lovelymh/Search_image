@@ -23,18 +23,10 @@ class EditUserinfo extends Component {
     return this.props.userinfo_EditRequest(id, name, pw)
       .then(()=> {
         if(this.props.edit_status === "SUCCESS") {
-          //create session data
-          let loginData = {
-            isLoggedIn: true,
-            username: name
-          };
-
-        document.cookie = `key=${btoa(JSON.stringify(loginData))}`;
-
-        this.props.history.push({
-          pathname: '/',
-          state: { from: this.props.location.pathname }
-        });
+          this.props.history.push({
+            pathname: '/',
+            state: { from: this.props.location.pathname }
+          });
           return true;
         } else {
           return false;

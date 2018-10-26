@@ -20,12 +20,14 @@ class Userimagepage extends Component{
 
   render(){
        let userimagelist = this.props.all_userimage.userimageinfo;
-       const userimage_list = userimagelist.map((userimage, idx) => (
-        <Userimage
-           imgid={userimage.imageid}
-           src={`./images/${userimage.imageid}_S.jpg`}
-           key={userimage.imageid}
-         />));
+       if(userimagelist){
+         const userimage_list = userimagelist.map((userimage, idx) => (
+          <Userimage
+             imgid={userimage.imageid}
+             src={`./images/${userimage.imageid}_S.jpg`}
+             key={userimage.imageid}
+           />));
+       }
         const nothing = (
           <div className="nothing-userimage">
             좋아요를 누른 이미지가 없어요!
@@ -35,7 +37,7 @@ class Userimagepage extends Component{
       <div className="userimage-page-wrapper">
         <div className="userimage-user">{this.props.status.currentUser}님의 좋아요 리스트</div>
         <div className="userimage-list">
-          {this.props.all_userimage.userimageinfo.length > 0 ? userimage_list : nothing }
+          {userimagelist.length > 0 ? userimage_list : nothing }
         </div>
       </div>
     );
