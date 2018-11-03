@@ -1,4 +1,5 @@
 import express from 'express';
+import compression from 'compression';
 import WebpackDevServer from 'webpack-dev-server';
 import webpack from 'webpack';
 import bodyParser from 'body-parser'; //JSON을 파싱할때 사용하는 미들웨어
@@ -11,6 +12,7 @@ const app = express();
 const port = 3000;
 const devPort = 3001;
 
+app.use(compression()); //gzip
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json;

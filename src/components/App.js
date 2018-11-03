@@ -14,11 +14,15 @@ class App extends Component {
         super(props);
         this.state = {
             loadingState: false,
-            page_num: 1
+            page_num: 1,
+            isMounted: false
         };
     }
 
     componentDidMount() {
+        this.setState({
+          isMounted: true
+        })
         const { getStatusRequest, set_searchname, imageRequest } = this.props;
         getStatusRequest();
 
@@ -30,33 +34,36 @@ class App extends Component {
 
         $(window).scroll(() => {
             if ($(document).height() - $(window).height() - $(window).scrollTop() < 250) {
-               if(this.props.history.location.pathname=='/'){
                   if(!this.state.loadingState){
-                    let next_page_num = this.state.page_num + 1;
-                    this.setState({
-                       loadingState: true,
-                       page_num: next_page_num
-                    }, () => {
-                       imageRequest(this.props.searchname, this.state.page_num, 2)
-                        .then(() => {
-                        //  console.log("요청",this.props.searchname, this.state.page_num)
-                        })
-                    });
+                    if(this.state.isMounted){
+                      let next_page_num = this.state.page_num + 1;
+                      this.setState({
+                         loadingState: true,
+                         page_num: next_page_num
+                      }, () => {
+                         imageRequest(this.props.searchname, this.state.page_num, 2)
+                          .then(() => {
+                          //  console.log("요청",this.props.searchname, this.state.page_num)
+                          })
+                      });
                   }
                }
             } else {
-               if(this.props.history.location.pathname=='/'){
                 if(this.state.loadingState){
+                  if(this.state.isMounted){
                     this.setState({
                         loadingState: false
                     });
+                  }
                 }
-              }
             }
         });
     }
 
-  componentWillUnMount() {
+  componentWillUnmount() {
+    this.setState({
+        isMounted: false
+    });
     $(window).unbind();
   }
 

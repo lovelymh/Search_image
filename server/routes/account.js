@@ -121,6 +121,7 @@ router.put('/user/:userid', (req, res) => {
 //새로고침을 해서 어플리케이션이 처음부터 다시 렌더링하게 될때,
 //현재 갖고있는 쿠키가 유효한건지 체크하기 위해서 필요하다
 router.get('/getinfo', (req, res) => {
+  //익스플로러가 로그아웃되지 않는 문제로 추가함
   res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
   if(typeof req.session.loginInfo === "undefined") {
     return res.status(401).json({
