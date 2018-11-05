@@ -10,8 +10,11 @@ module.exports = {
 
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
+        new webpack.DefinePlugin({
+          'process.env':{
+            'NODE_ENV': JSON.stringify('production')
+          }
+        }),
         new webpack.optimize.UglifyJsPlugin({ //공백을 제거함
           compressor: {
             warnings: false,
