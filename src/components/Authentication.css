@@ -127,4 +127,16 @@
   .to {
     font-size: 2.5rem;
   }
+  .input-form {
+    border: 3px solid #ffc078;
+  }
+
+  .input-form input{
+    border: 3px solid #ffc078;
+  }
+
+  .input-form input:focus{
+    outline: none; /*기본 outline을 제거*/
+    border: 4px solid #f76707;
+  }
 }

@@ -22,7 +22,7 @@ img {
     height: 40vh;
 }
 
-@media only screen and (min-device-width : 801px), (max-width : 801px) {
+@media only screen and (min-device-width : 801px), (min-width : 801px) {
   img {
       width: 30vw;
   }
@@ -53,7 +53,6 @@ img {
   .img:nth-of-type(2n) {
     margin-left: 0px;
   }
-
 }
 
 

@@ -11,7 +11,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  height: 80vh;
+  height: 85vh;
 }
 
 .down-image {
@@ -58,4 +58,28 @@
 .show-image {
   width: 500px;
   height: 300px;
+}
+
+@media screen and (max-device-width: 480px) {
+  .show-image {
+    width: 50rem;
+    height: 30rem;
+  }
+  .down-image {
+    margin-top: 2rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .down-image div{
+    border: 3px solid #ffc078;
+    padding: 2rem;
+    font-size: 3rem;
+    margin-left: 10px;
+    margin-top: 10px;
+    text-align: center;
+  }
 }

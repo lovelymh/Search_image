@@ -5,7 +5,7 @@ import $ from 'jquery';
 
 const UpButton = styled.div`
     top: ${({ scrolltop }) => (scrolltop ? `${scrolltop}px` : '0px')};
-    right: 100px;
+    right: 50px;
     border-radius: 100px;
     position: fixed;
     display: ${({ visible }) => (visible ? 'block' : 'none')};
@@ -13,12 +13,12 @@ const UpButton = styled.div`
     font-size: 2rem;
     cursor: pointer;
     background-color: #ffd8a8;
-    padding: 0.333rem 0.7rem;
+    padding: 0.2rem 0.7rem 0.4rem 0.7rem;
     color: #495057;
 
     @media (max-device-width: 480px) {
         font-size: 3.5rem;
-        padding: 2rem 2.5rem;
+        padding: 0.6rem 1.5rem 1rem 1.5rem;
         top: 99rem;
         right: 3rem;
     }

@@ -1,3 +1,14 @@
+.userimage-page-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-height: 50vh;
+  height:auto !important; /*IE min-height 문제 해결*/
+}
+
 .userimage-list {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -24,21 +35,46 @@
   margin-top: 20px;
 }
 
-@media only screen and (min-width : 801px) {
+@media only screen and (min-device-width : 801px), (min-width : 801px) {
   .image {
       width: 22vw;
       margin-left: 10px;
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-device-width : 800px), (max-width : 800px) {
   .image {
       width: 45vw;
       margin-left: 10px;
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-device-width : 480px) {
+  .image {
+      width: 90vw;
+  }
+
+  .image:nth-of-type(2n) {
+    margin-left: 0px;
+  }
+
+  .userimage-user {
+    margin-top: 3rem;
+    font-size: 3rem;
+  }
+
+  .nothing-userimage{
+    margin-top: 2rem;
+    font-size: 2rem;
+  }
+
+  .userimage-page-wrapper {
+    min-height: 80vh;
+    height:auto !important; /*IE min-height 문제 해결*/
+  }
+}
+
+@media screen and (max-width : 480px) {
   .image {
       width: 90vw;
   }
