@@ -22,7 +22,7 @@ img {
     height: 40vh;
 }
 
-@media only screen and (min-width : 801px) {
+@media only screen and (min-device-width : 801px), (max-width : 801px) {
   img {
       width: 30vw;
   }
@@ -33,7 +33,7 @@ img {
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-device-width: 800px), (max-width: 800px) {
   img {
       width: 45vw;
   }
@@ -43,9 +43,11 @@ img {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-device-width: 480px), (max-width: 480px) {
   img {
-      width: 90vw;
+      width: 85vw;
+      height: 30vh;
+      margin-top: 2rem;
   }
 
   .img:nth-of-type(2n) {
@@ -53,3 +55,5 @@ img {
   }
 
 }
+
+

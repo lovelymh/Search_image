@@ -10,11 +10,18 @@ const UpButton = styled.div`
     position: fixed;
     display: ${({ visible }) => (visible ? 'block' : 'none')};
     text-align: center;
-    font-size: 30px;
+    font-size: 2rem;
     cursor: pointer;
     background-color: #ffd8a8;
-    padding: 5px 10px;
+    padding: 0.333rem 0.7rem;
     color: #495057;
+
+    @media (max-device-width: 480px) {
+        font-size: 3.5rem;
+        padding: 2rem 2.5rem;
+        top: 99rem;
+        right: 3rem;
+    }
 `
 
 class ScrollupButton extends Component{

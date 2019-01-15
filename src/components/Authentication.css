@@ -94,3 +94,37 @@
 .none {
   display: none;
 }
+
+/* Small Devices, Tablets : ~ 768px */
+/* Custom, iPhone Retina : ~ 320px */
+@media screen and (max-device-width : 480px) {
+  .input-form {
+    padding: 3rem;
+  }
+  .type{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    font-size: 5rem;
+    padding: 20px;
+  }
+
+  .input-form input{
+    margin-bottom: 2.5rem;
+    font-size: 3.5rem;
+    width: 44rem;
+    height: 9rem;
+    padding: 1rem 2rem;
+  }
+
+  .submit{
+    margin-bottom: 3rem;
+    padding: 2rem;
+    width: 44rem;
+    cursor: pointer;
+    font-size: 4rem;
+  }
+
+  .to {
+    font-size: 2.5rem;
+  }
+}

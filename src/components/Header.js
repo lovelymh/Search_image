@@ -112,7 +112,7 @@ class Header extends Component {
     const notloggedin = (
       <ul>
         <li onClick={this.handleClicklogin}><Link to="/login">Login</Link></li>
-        <li onClick={this.handleClickregister}><Link to="/register">Sign up</Link></li>
+        <li onClick={this.handleClickregister}><Link to="/register">Signup</Link></li>
       </ul>
     );
 
