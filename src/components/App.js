@@ -64,7 +64,7 @@ class App extends Component {
     this.setState({
         isMounted: false
     });
-    $(window).unbind();
+    // $(window).unbind('scroll');
   }
 
   render() {
