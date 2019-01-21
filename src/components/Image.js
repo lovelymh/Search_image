@@ -2,11 +2,24 @@ import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as images from '../actions/image';
+import styled from 'styled-components';
 
+const ImgHover = styled.div`
+  position: absolute;
+  display: ${({ visible }) => (visible ? 'flex' : 'none')};
+  bottom: 1px;
+  font-size: 30px;
+  background: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0.6) 100%);
+  color: #ffff;
+  width: 100%;
+  `
 class Image extends Component {
 
   constructor(props){
     super(props);
+    this.state = {
+      isVisible: false,
+    }
   }
 
   handleSaveimage = (largeImageURL, webformatURL, id) => {
@@ -25,10 +38,15 @@ class Image extends Component {
   render(){
     const { largeImageURL, webformatURL, title, id } = this.props;
     return(
-      <div className={`img ${id}`} onClick={()=>this.handleSaveimage(largeImageURL, webformatURL, id)}>
+      <div className={`img ${id}`} onClick={()=>this.handleSaveimage(largeImageURL, webformatURL, id)}
+             id={id} onMouseOver={()=>this.setState({isVisible: true})}
+             onMouseLeave={()=>{this.setState({isVisible: false})}}>
           <Link to={{ pathname: '/image/'+id, state: {unique_id: id, webformatURL}}}>
-              <img src={webformatURL}/>
+            <img src={webformatURL} />
           </Link>
+          <ImgHover visible={this.state.isVisible}>
+            <div className="heart" style={{marginLeft: 'auto', marginRight: '5px', marginBottom: '5px'}}>♡</div>
+          </ImgHover>
       </div>
     );
   }

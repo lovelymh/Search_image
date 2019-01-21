@@ -13,7 +13,7 @@ const UpButton = styled.div`
     font-size: 2rem;
     cursor: pointer;
     background-color: #ffd8a8;
-    padding: 0.2rem 0.7rem 0.4rem 0.7rem;
+    padding: 0.2rem 0.7rem 0.6rem 0.7rem;
     color: #495057;
 
     @media (max-device-width: 480px) {
