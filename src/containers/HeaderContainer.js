@@ -14,7 +14,7 @@ const mapDispatchToProps = (dispatch) => ({
   logoutRequest: () => dispatch(auth.logoutRequest()),
   imageRequest: (searchname, pagenum, search_tag) => dispatch(images.imageRequest(searchname, pagenum, 1)),
   set_searchname: (searchname) => dispatch(images.set_searchname(searchname)),
-  userImageallRequest: (userid) => dispatch(userimage.userImageallRequest(userid))
+  // userImageallRequest: (userid) => dispatch(userimage.userImageallRequest(userid))
 });
 
 const HeaderContainer = connect(
